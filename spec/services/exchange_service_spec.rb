@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'json'
 require './app/services/exchange_service'
 
-describe ExchangeService do 
+describe ExchangeService do
   let(:source_currency) { 'USD' }
   let(:target_currecy) { 'BRL' }
   let(:exchange_value) { 3.45 }
@@ -23,12 +23,12 @@ describe ExchangeService do
 
   describe '.call' do
     context 'when amount is given'
-      it 'returns amount * exchange_value' do
-        amount = rand(0..9999)
-        service_exchange = ExchangeService.new('USD', 'BRL', amount).call
-        expect_exchange = amount * exchange_value
+    it 'returns amount * exchange_value' do
+      amount = rand(0..9999)
+      service_exchange = ExchangeService.new('USD', 'BRL', amount).call
+      expect_exchange = amount * exchange_value
 
-        expect(service_exchange).to eq(expect_exchange)  
-      end
+      expect(service_exchange).to eq(expect_exchange)
+    end
   end
 end
