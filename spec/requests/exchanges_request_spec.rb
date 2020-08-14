@@ -4,7 +4,7 @@ RSpec.describe "Exchanges", type: :request do
 
   describe "GET /index" do
     it "returns http success" do
-      get "/exchanges/index"
+      get "/"
       expect(response).to have_http_status(:success)
     end
   end
@@ -18,10 +18,9 @@ RSpec.describe "Exchanges", type: :request do
       get "/convert", params: {
         source_currency: 'USD',
         target_currency: 'BRL',
-        amount: rand(1...9999)
+        amount: @amount
       }
       expect(response).to have_http_status(:success)
     end
   end
-
 end

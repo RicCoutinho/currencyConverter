@@ -9,11 +9,10 @@ class ExchangeService
     @amount = amount.to_f
   end
 
-
   def call 
     begin
       value = get_exchange
-      value * @amount
+      value * @amount.to_f
     rescue RestClient::ExceptionWithResponse => e
       e.response
     end
@@ -27,7 +26,7 @@ class ExchangeService
     url = "#{exchange_api_url}?token=#{exchange_api_key}&currency=#{@source_currency}/#{@target_currency}"
 
     res =  RestClient.get url
-
+    
     JSON.parse(res.body)['currency'][0]['value'].to_f
   end
 end
